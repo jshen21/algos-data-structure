@@ -18,6 +18,8 @@ const majorityElement = function(nums) { // Big O(nlogn)
     return nums.sort()[Math.floor(nums.length/2)]   
 };
 
+
+
 // const majorityElement = function(nums) { // Big O(n)
 //     let map = {};
 //     let maxNum;
@@ -32,6 +34,5 @@ const majorityElement = function(nums) { // Big O(nlogn)
 //             maxNum = key
 //         }    
 //     }
-//     return maxNum
-    
+//     return maxNum 
 // };
