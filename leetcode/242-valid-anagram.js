@@ -14,9 +14,8 @@
 // Follow up:
 // What if the inputs contain unicode characters? How would you adapt your solution to such case?
 
-const isAnagram = function(s, t) {big O(m + n)
+const isAnagram = function(s, t) {//big O(m + n)
     let s1 = s.split('').sort().join('');
     let t1 = t.split('').sort().join('');
-    return s1 === t1
-    
-};
+    return s1 === t1;
+}
