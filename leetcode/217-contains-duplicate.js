@@ -17,13 +17,28 @@
 
 
 const containsDuplicate = function(nums) { //Big O(n)
-    let sorted = nums.sort();
-    
+    let sorted = nums.slice().sort();
+
     for (let i = 0; i< sorted.length; i++) {
         if(sorted[i] === sorted[i + 1]) {
             return true
         }
     }
     
-    return false  
+    return false;  
 };
+
+// const containsDuplicate = function(nums) {
+//     let map = {};
+//     for (let i = 0; i< nums.length; i++) {
+//         map[nums[i]] = map[nums[i]] + 1 || 1
+//     }
+    
+//     for (let key in map) {
+//         if (map[key] >= 2) {
+//             return true;
+//         }
+//     }
+    
+//     return false;
+// };
