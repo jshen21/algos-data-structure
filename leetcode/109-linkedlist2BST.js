@@ -16,30 +16,61 @@
 //    /   /
 //  -10  5
 
-const sortedListToBST = function(head) {
-    if (!head) return null;
-    if (!head.next) return new TreeNode(head.val);
+// const sortedListToBST = function(head) {
+//     if (!head) return null;
+//     if (!head.next) return new TreeNode(head.val);
     
-    let slow = head;
-    let fast = head;
-    let prev = null;
+//     let slow = head;
+//     let fast = head;
+//     let prev = null;
    
    
-    while (fast && fast.next) {
-        prev = slow;
-        slow = slow.next;
-        fast = fast.next.next;      
-    }
+//     while (fast && fast.next) {
+//         prev = slow;
+//         slow = slow.next;
+//         fast = fast.next.next;      
+//     }
     
-    prev.next = null;
+//     prev.next = null;
     
-    let root = new TreeNode(slow.val);
+//     let root = new TreeNode(slow.val);
     
-    root.left = sortedListToBST(head);
-    root.right = sortedListToBST(slow.next);
+//     root.left = sortedListToBST(head);
+//     root.right = sortedListToBST(slow.next);
     
-    return root;
-};
+//     return root;
+// };
 
 // Time complexity: Big O(NlogN);
 // Space complexity: O(logN)
+
+
+// Solution 2 (optimized): 
+const sortedArrayToBST = function(nums) {
+    if (!nums.length) return null;
+        
+    const mid = Math.floor(nums.length / 2);
+    const root = new TreeNode(nums[mid]);
+    
+    // subtrees are BSTs as well
+    root.left = sortedArrayToBST(nums.slice(0, mid));
+    root.right = sortedArrayToBST(nums.slice(mid + 1));
+    
+    return root; 
+};
+
+const sortedListToBST = function(head) {
+    if (!head) return null;
+    if (!head.next) return new TreeNode(head.val);   
+    let arr = [head.val];
+
+    while (head && head.next) {
+        head = head.next;
+        arr.push(head.val)
+    }
+
+    return sortedArrayToBST(arr);   
+};
+
+// Time complexity: Big O(N);
+// Space complexity: Big O(N);
